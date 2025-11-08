@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Creations - Full Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for all sections -->
+    <script type="module">
+        import { createIcons, Code, MessageCircle, Zap, Award, Layers, Clock, DollarSign, Menu, X, CheckCircle, Smartphone, MapPin, Mail, Linkedin, Youtube, Twitter, Instagram, Send, Server, Database, Cloud } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+        createIcons({ icons: { Code, MessageCircle, Zap, Award, Layers, Clock, DollarSign, Menu, X, CheckCircle, Smartphone, MapPin, Mail, Linkedin, Youtube, Twitter, Instagram, Send, Server, Database, Cloud } });
+    </script>
+    <style>
+        /* Custom styles for the dark theme and smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        .bg-primary {
+            background-color: #0c0c0c;
+        }
+        /* Accent Color: Deep Violet/Purple */
+        .text-accent {
+            color: #9333ea;
+        }
+        .bg-accent {
+            background-color: #9333ea;
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 18px #9333ea;
+        }
+        .header-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-primary text-gray-50 min-h-screen font-sans">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-primary header-shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Company Name -->
+            <a href="#home" class="text-xl sm:text-2xl font-bold text-gray-50 flex flex-col items-center leading-none">
+                <i data-lucide="code" class="w-6 h-6 text-accent"></i>
+                <span class="mt-1">Swift<span class="text-accent">Creations</span></span>
+                <span class="text-xs font-normal text-gray-400">Beyond Code</span>
+            </a>
+            
+            <!-- Desktop Navigation - UPDATED -->
+            <nav class="hidden md:flex space-x-6 lg:space-x-4 text-sm font-medium">
+                <a href="#home" class="text-gray-400 hover:text-accent transition duration-300">HOME</a>
+                <a href="#services" class="text-gray-400 hover:text-accent transition duration-300">Services</a>
+                <a href="#why-us" class="text-gray-400 hover:text-accent transition duration-300">Why Us</a>
+                <a href="#processes" class="text-gray-400 hover:text-accent transition duration-300">Processes</a>
+                <a href="#pricing" class="text-gray-400 hover:text-accent transition duration-300">Pricing</a>
+                <a href="#contact-us" class="px-3 py-1 bg-accent text-gray-900 font-semibold rounded-lg hover-glow transition duration-300">Contact Us</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-400 hover:text-accent focus:outline-none flex space-x-1">
+                <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay - UPDATED -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-primary/95 backdrop-blur-sm z-40">
+            <div class="flex flex-col items-center justify-center min-h-screen space-y-6">
+                <button id="close-menu-button" class="absolute top-6 right-6 text-gray-400 hover:text-accent focus:outline-none">
+                    <i data-lucide="x" class="w-8 h-8"></i>
+                </button>
+                <a href="#home" class="text-2xl text-gray-50 hover:text-accent transition duration-300" data-menu-item>HOME</a>
+                <a href="#services" class="text-2xl text-gray-50 hover:text-accent transition duration-300" data-menu-item>Services</a>
+                <a href="#why-us" class="text-2xl text-gray-50 hover:text-accent transition duration-300" data-menu-item>Why Us</a>
+                <a href="#processes" class="text-2xl text-gray-50 hover:text-accent transition duration-300" data-menu-item>Processes</a>
+                <a href="#pricing" class="text-2xl text-gray-50 hover:text-accent transition duration-300" data-menu-item>Pricing</a>
+                <a href="#contact-us" class="text-2xl px-6 py-3 bg-accent text-gray-900 font-semibold rounded-lg hover-glow transition duration-300" data-menu-item>Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. HOME Section (Hero - Landing Page) -->
+        <section id="home" class="relative pt-16 pb-20 sm:pt-24 sm:pb-32 overflow-hidden min-h-[80vh] flex items-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                
+                <!-- Main Headline -->
+                <h2 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
+                    Smart, reliable <br class="sm:hidden">
+                    <span class="text-accent">websites for Kenyan</span> businesses.
+                </h2>
+                
+                <!-- Compelling Subtext (From Image) -->
+                <p class="mt-4 text-xl sm:text-2xl text-gray-400 max-w-2xl mx-auto mb-12">
+                    Struggling with an outdated site? Losing sales because customers can’t order online? From simple landing pages to full e-commerce stores, we build **affordable**, easy-to-use websites that help your business grow.
+                </p>
+
+                <div class="space-y-4 max-w-sm mx-auto">
+                    <!-- Primary CTA: Chat on WhatsApp (High-converting local method) -->
+                    <a href="https://wa.me/1234567890?text=Hi%2C%20I'm%20interested%20in%20a%20free%20consultation%20for%20my%20business%20website." target="_blank" class="inline-flex items-center justify-center w-full px-10 py-4 bg-[#25D366] text-gray-900 text-lg font-bold rounded-xl hover:opacity-90 transform hover:scale-105 transition duration-300 shadow-xl shadow-[#25D366]/30">
+                        <i data-lucide="send" class="w-6 h-6 mr-3"></i>
+                        Chat on WhatsApp
+                    </a>
+                    
+                    <!-- Secondary CTA: See Pricing -->
+                    <a href="#pricing" class="inline-flex items-center justify-center w-full px-10 py-4 bg-transparent border-2 border-gray-700 text-gray-50 text-lg font-bold rounded-xl hover:border-accent hover:text-accent transition duration-300">
+                        See Pricing
+                    </a>
+                </div>
+
+                <!-- Value Proposition (From Image) -->
+                <p class="mt-6 text-sm text-gray-400 font-semibold">
+                    Includes a **Free 15-Min Consultation!**
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. Services Section -->
+        <section id="services" class="py-20 sm:py-32 border-t border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-accent uppercase font-semibold mb-2">What We Offer</p>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-50 mb-4">Our Core Services</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1: Custom Web Dev -->
+                    <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl hover:border-accent transform hover:translate-y-[-5px] transition duration-300">
+                        <i data-lucide="layers" class="w-10 h-10 text-accent mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-50 mb-3">Custom Web Development</h3>
+                        <p class="text-gray-400">Building bespoke, fast, and scalable websites from the ground up using modern frameworks (React, Node.js, Django).</p>
+                    </div>
+
+                    <!-- Service Card 2: UI/UX Design -->
+                    <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl hover:border-accent transform hover:translate-y-[-5px] transition duration-300">
+                        <i data-lucide="award" class="w-10 h-10 text-accent mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-50 mb-3">UI/UX Design Strategy</h3>
+                        <p class="text-gray-400">Designing intuitive user interfaces and experiences that reduce friction and maximize conversion rates.</p>
+                    </div>
+
+                    <!-- Service Card 3: E-commerce -->
+                    <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl hover:border-accent transform hover:translate-y-[-5px] transition duration-300">
+                        <i data-lucide="zap" class="w-10 h-10 text-accent mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-50 mb-3">E-commerce Solutions</h3>
+                        <p class="text-gray-400">Creating powerful and secure online stores optimized for mobile and integrated with payment gateways.</p>
+                    </div>
+                    
+                    <!-- NEW Service Card 4: Cloud Projects (AWS) -->
+                    <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-xl hover:border-accent transform hover:translate-y-[-5px] transition duration-300">
+                        <i data-lucide="cloud" class="w-10 h-10 text-accent mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-50 mb-3">Cloud Projects (AWS)</h3>
+                        <p class="text-gray-400">Expert AWS solutions for scalable, secure, and cost-effective cloud infrastructure. From migration to optimization, we handle it all.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Tech Stack Section -->
+        <section id="tech-stack" class="py-20 sm:py-32 bg-[#121212] border-t border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-accent uppercase font-semibold mb-2">Modern Tools</p>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-50 mb-4">Our Tech Stack</h2>
+                    <p class="text-gray-400 text-xl max-w-3xl mx-auto">
+                        We use powerful, high-performance technologies to build solutions that are fast, secure, and ready to scale globally.
+                    </p>
+                </div>
+
+                <!-- Tech Stack Grid (3x3 on desktop) -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <!-- Item 1: Golang -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <span class="text-5xl font-extrabold text-gray-50 bg-[#00ADD8] text-gray-900 px-3 py-1 rounded-lg mb-2 leading-none">Go</span>
+                        <p class="font-bold text-gray-50 mt-2">Golang</p>
+                    </div>
+                    <!-- Item 2: Javascript -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <span class="text-5xl font-extrabold text-gray-900 bg-[#F7DF1E] px-3 py-1 rounded-lg mb-2 leading-none">JS</span>
+                        <p class="font-bold text-gray-50 mt-2">Javascript</p>
+                    </div>
+                    <!-- Item 3: Typescript -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <span class="text-5xl font-extrabold text-gray-50 bg-[#3178C6] px-2 py-1 rounded-lg mb-2 leading-none">TS</span>
+                        <p class="font-bold text-gray-50 mt-2">Typescript</p>
+                    </div>
+                    <!-- Item 4: Nodejs -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <i data-lucide="server" class="w-10 h-10 text-[#68A063] mb-2"></i>
+                        <p class="font-bold text-gray-50 mt-2">Node.js</p>
+                    </div>
+                    <!-- Item 5: React -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <i data-lucide="zap" class="w-10 h-10 text-[#61DAFB] mb-2"></i>
+                        <p class="font-bold text-gray-50 mt-2">React</p>
+                    </div>
+                    <!-- Item 6: Django -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <span class="text-5xl font-extrabold text-gray-50 mb-2 leading-none">🐍</span>
+                        <p class="font-bold text-gray-50 mt-2">Django</p>
+                    </div>
+                    <!-- Item 7: MongoDB -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <i data-lucide="database" class="w-10 h-10 text-[#47A248] mb-2"></i>
+                        <p class="font-bold text-gray-50 mt-2">MongoDB</p>
+                    </div>
+                    <!-- Item 8: PostgreSQL -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <i data-lucide="database" class="w-10 h-10 text-[#336791] mb-2"></i>
+                        <p class="font-bold text-gray-50 mt-2">PostgreSQL</p>
+                    </div>
+                    <!-- Item 9: AWS -->
+                    <div class="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl border border-gray-800 shadow-lg hover:border-accent transition duration-300 text-center">
+                        <i data-lucide="cloud" class="w-10 h-10 text-[#FF9900] mb-2"></i>
+                        <p class="font-bold text-gray-50 mt-2">AWS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Why Us Section -->
+        <section id="why-us" class="py-20 sm:py-32 border-t border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-accent uppercase font-semibold mb-2">Our Advantage</p>
+                        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-50 mb-6">Why Choose Swift Creations?</h2>
+                        <p class="text-gray-400 text-lg mb-8">
+                            We combine technical excellence with clear, open communication. We focus on delivering real business value, not just code.
+                        </p>
+                        <ul class="space-y-6">
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-50">Proven Expertise</h4>
+                                    <p class="text-gray-400 text-sm">Years of experience building successful, highly-rated applications for various industries.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-50">Transparent Pricing</h4>
+                                    <p class="text-gray-400 text-sm">No hidden fees, clear project scope, and fixed-price models available for certainty.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-50">Dedicated Support</h4>
+                                    <p class="text-gray-400 text-sm">Post-launch monitoring, maintenance, and ongoing development support.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Placeholder for image/illustration -->
+                    <div class="h-96 bg-gray-900 rounded-xl flex items-center justify-center border border-gray-800">
+                        <span class="text-gray-500 text-lg">Why Us Illustration Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Our Story Section -->
+        <section id="our-story" class="py-20 sm:py-32 bg-[#121212] border-t border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                     <!-- Placeholder for image/illustration -->
+                    <div class="h-96 bg-gray-900 rounded-xl flex items-center justify-center border border-gray-800 order-2 lg:order-1">
+                        <span class="text-gray-500 text-lg">Our Story Illustration Placeholder</span>
+                    </div>
+
+                    <div class="order-1 lg:order-2">
+                        <p class="text-accent uppercase font-semibold mb-2">Our Journey</p>
+                        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-50 mb-6">Built on Trust, Driven by Innovation</h2>
+                        <p class="text-gray-400 text-lg mb-4">
+                            Swift Creations started with a simple observation: many small and growing businesses were being left behind by complex, overpriced, or outdated digital solutions. We saw a need for **high-quality, localized web development** that was genuinely accessible and focused on delivering tangible results.
+                        </p>
+                        <p class="text-gray-400 text-lg mb-8">
+                            From our humble beginnings, we have grown into a team passionate about using modern tech—from **Golang** to **React**—to empower entrepreneurs. Our commitment is to translate your vision into a robust, high-performing online presence, ensuring you have the tools to compete in the digital economy.
+                        </p>
+                        <a href="#processes" class="inline-flex items-center text-accent font-semibold group">
+                            See Our Mission in Action
+                            <i data-lucide="message-circle" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition duration-200"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Processes Section -->
+        <section id="processes" class="py-20 sm:py-32 border-t border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-accent uppercase font-semibold mb-2">How We Work</p>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-50 mb-4">Our Development Process</h2>
+                </div>
+
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Timeline line (hidden on mobile, centered on desktop) -->
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-800"></div>
+
+                    <div class="space-y-12">
+                        <!-- Step 1: Discovery -->
+                        <div class="flex flex-col md:flex-row md:justify-start items-center">
+                            <div class="md:w-1/2 md:pr-12 text-center md:text-right">
+                                <h3 class="text-3xl font-bold text-accent">01. Discovery</h3>
+                                <p class="text-gray-400 mt-2">Free consultation to define goals, scope, and technical requirements.</p>
+                            </div>
+                            <div class="w-8 h-8 bg-accent rounded-full border-4 border-primary absolute md:relative"></div>
+                            <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+                        </div>
+
+                        <!-- Step 2: Design -->
+                        <div class="flex flex-col md:flex-row md:justify-end items-center">
+                            <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+                            <div class="w-8 h-8 bg-accent rounded-full border-4 border-primary absolute md:relative"></div>
+                            <div class="md:w-1/2 md:pl-12 text-center md:text-left">
+                                <h3 class="text-3xl font-bold text-accent">02. Design</h3>
+                                <p class="text-gray-400 mt-2">Wireframes and polished UI/UX prototypes for client approval.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Development -->
+                        <div class="flex flex-col md:flex-row md:justify-start items-center">
+                            <div class="md:w-1/2 md:pr-12 text-center md:text-right">
+                                <h3 class="text-3xl font-bold text-accent">03. Development</h3>
+                                <p class="text-gray-400 mt-2">Clean, high-performance coding and regular progress reviews.</p>
+                            </div>
+                            <div class="w-8 h-8 bg-accent rounded-full border-4 border-primary absolute md:relative"></div>
+                            <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+                        </div>
+
+                        <!-- Step 4: Launch & Support -->
+                        <div class="flex flex-col md:flex-row md:justify-end items-center">
+                            <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+                            <div class="w-8 h-8 bg-accent rounded-full border-4 border-primary absolute md:relative"></div>
+                            <div class="md:w-1/2 md:pl-12 text-center md:text-left">
+                                <h3 class="text-3xl font-bold text-accent">04. Launch & Support</h3>
+                                <p class="text-gray-400 mt-2">Deployment, final testing, and 90 days of complimentary support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Pricing Section -->
+        <section id="pricing" class="py-20 sm:py-32 bg-[#121212] border-t border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <p class="text-accent uppercase font-semibold mb-2">Investment</p>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-50 mb-4">Pricing Packages</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Basic Package -->
+                    <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-2xl flex flex-col">
+                        <h3 class="text-3xl font-bold text-gray-50 mb-3">Starter</h3>
+                        <p class="text-gray-400 mb-6">Perfect for new businesses or simple projects.</p>
+                        <p class="text-4xl font-extrabold text-accent mb-6">
+                            $2,500<span class="text-xl text-gray-400 font-normal"> / project</span>
+                        </p>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Single Page Design</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Basic SEO Setup</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Responsive for Mobile</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> 1 Revision Round</li>
+                        </ul>
+                        <a href="#contact-us" class="mt-8 block text-center px-6 py-3 bg-gray-700 text-gray-50 font-semibold rounded-lg hover:bg-accent hover:text-gray-900 transition duration-300">
+                            Select Plan
+                        </a>
+                    </div>
+
+                    <!-- Pro Package (Highlighted) -->
+                    <div class="bg-gray-900 p-8 rounded-xl border-2 border-accent shadow-2xl shadow-violet-600/30 transform scale-[1.05] flex flex-col">
+                         <span class="absolute top-0 right-0 -mt-3 -mr-3 px-4 py-1 bg-accent text-gray-900 text-sm font-bold rounded-full rotate-3">Most Popular</span>
+                        <h3 class="text-3xl font-bold text-gray-50 mb-3">Professional</h3>
+                        <p class="text-gray-400 mb-6">The best value for growing businesses needing scale.</p>
+                        <p class="text-4xl font-extrabold text-accent mb-6">
+                            $7,900<span class="text-xl text-gray-400 font-normal"> / project</span>
+                        </p>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Multi-Page Website (Up to 8)</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Advanced UI/UX Design</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Custom CMS Integration</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Performance Optimization</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> 3 Revision Rounds</li>
+                        </ul>
+                        <a href="#contact-us" class="mt-8 block text-center px-6 py-3 bg-accent text-gray-900 font-bold rounded-lg hover:opacity-90 transition duration-300 hover-glow">
+                            Start Building
+                        </a>
+                    </div>
+
+                    <!-- Enterprise Package -->
+                    <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-2xl flex flex-col">
+                        <h3 class="text-3xl font-bold text-gray-50 mb-3">Enterprise</h3>
+                        <p class="text-gray-400 mb-6">For complex, custom web application needs.</p>
+                        <p class="text-4xl font-extrabold text-accent mb-6">
+                            Custom<span class="text-xl text-gray-400 font-normal"> / quote</span>
+                        </p>
+                        <ul class="space-y-3 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Unlimited Pages/Features</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Custom API Development</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Dedicated Project Manager</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-accent mr-3"></i> Ongoing Support & Maintenance</li>
+                        </ul>
+                        <a href="#contact-us" class="mt-8 block text-center px-6 py-3 bg-gray-700 text-gray-50 font-semibold rounded-lg hover:bg-accent hover:text-gray-900 transition duration-300">
+                            Request Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Contact Us Section -->
+        <section id="contact-us" class="py-20 sm:py-32 border-t border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center mb-16">
+                    <p class="text-accent uppercase font-semibold mb-2">Get Started</p>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-50 mb-4">Let's Build Something Great</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                        Fill out the form below or use our quick contact methods to schedule your free consultation.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <!-- Contact Info Column -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="flex items-center p-4 bg-gray-900 rounded-lg border border-gray-800">
+                            <i data-lucide="smartphone" class="w-6 h-6 text-accent mr-4 flex-shrink-0"></i>
+                            <div>
+                                <p class="text-sm text-gray-400">Call or WhatsApp</p>
+                                <a href="tel:+1234567890" class="text-lg font-semibold text-gray-50 hover:text-accent transition duration-300">+1 (234) 567-890</a>
+                            </div>
+                        </div>
+                         <div class="flex items-center p-4 bg-gray-900 rounded-lg border border-gray-800">
+                            <i data-lucide="mail" class="w-6 h-6 text-accent mr-4 flex-shrink-0"></i>
+                            <div>
+                                <p class="text-sm text-gray-400">Email Us</p>
+                                <a href="mailto:hello@swiftcreations.com" class="text-lg font-semibold text-gray-50 hover:text-accent transition duration-300">hello@swiftcreations.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-gray-900 rounded-lg border border-gray-800">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-accent mr-4 flex-shrink-0"></i>
+                            <div>
+                                <p class="text-sm text-gray-400">Our Location</p>
+                                <p class="text-lg font-semibold text-gray-50">Remote First | Global Reach</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Column -->
+                    <div class="lg:col-span-2 bg-gray-900 p-8 rounded-xl border border-gray-800 shadow-2xl">
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-800 text-gray-50 border border-gray-700 rounded-lg focus:ring-accent focus:border-accent" placeholder="Jane Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-800 text-gray-50 border border-gray-700 rounded-lg focus:ring-accent focus:border-accent" placeholder="name@company.com">
+                            </div>
+                            <div>
+                                <label for="project" class="block text-sm font-medium text-gray-300 mb-2">Project Type</label>
+                                <select id="project" name="project" required class="w-full px-4 py-3 bg-gray-800 text-gray-50 border border-gray-700 rounded-lg focus:ring-accent focus:border-accent">
+                                    <option value="" disabled selected>Select a service...</option>
+                                    <option value="web_dev">Custom Web Development</option>
+                                    <option value="ui_ux">UI/UX Strategy</option>
+                                    <option value="ecommerce">E-commerce Solution</option>
+                                    <option value="cloud">Cloud Projects (AWS)</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Tell Us About Your Project</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-gray-800 text-gray-50 border border-gray-700 rounded-lg focus:ring-accent focus:border-accent" placeholder="I need a modern website for my new startup..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-accent text-gray-900 font-bold rounded-xl hover-glow transition duration-300 hover:opacity-90">
+                                Send Message
+                            </button>
+                            <div id="formMessage" class="mt-4 text-center text-sm hidden"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - UPDATED Quicklinks -->
+    <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-10">
+                
+                <!-- Col 1: Logo & Mission -->
+                <div class="col-span-2 md:col-span-2">
+                    <h4 class="text-2xl font-bold text-gray-50 mb-3">Swift<span class="text-accent">Creations</span></h4>
+                    <p class="text-gray-400 text-sm mb-6">Building high-performance, easy-to-use websites that drive real business results.</p>
+                    
+                    <!-- Social Media Links -->
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com/yourhandle" target="_blank" class="text-gray-500 hover:text-accent transition duration-300" aria-label="LinkedIn">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://youtube.com/yourhandle" target="_blank" class="text-gray-500 hover:text-accent transition duration-300" aria-label="YouTube">
+                            <i data-lucide="youtube" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://twitter.com/yourhandle" target="_blank" class="text-gray-500 hover:text-accent transition duration-300" aria-label="Twitter/X">
+                            <i data-lucide="twitter" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://instagram.com/yourhandle" target="_blank" class="text-gray-500 hover:text-accent transition duration-300" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quicklinks (Navigation) - UPDATED -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#services" class="text-gray-400 hover:text-accent transition duration-300">Services</a></li>
+                        <li><a href="#why-us" class="text-gray-400 hover:text-accent transition duration-300">Why Us</a></li>
+                        <li><a href="#processes" class="text-gray-400 hover:text-accent transition duration-300">Our Process</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-accent transition duration-300">Pricing</a></li>
+                        <li><a href="#tech-stack" class="text-gray-400 hover:text-accent transition duration-300">Tech Stack</a></li>
+                        <li><a href="#our-story" class="text-gray-400 hover:text-accent transition duration-300">Our Story</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-300 mb-4">Legal</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-accent transition duration-300">Terms of Service</a></li>
+                        <li><a href="#home" class="text-gray-400 hover:text-accent transition duration-300">Sitemap</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-300 mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#contact-us" class="text-gray-400 hover:text-accent transition duration-300">Contact Form</a></li>
+                        <li><a href="mailto:hello@swiftcreations.com" class="text-gray-400 hover:text-accent transition duration-300">hello@swiftcreations.com</a></li>
+                        <li><a href="tel:+1234567890" class="text-gray-400 hover:text-accent transition duration-300">+1 (234) 567-890</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright Line -->
+            <div class="mt-16 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-500 text-xs">
+                    &copy; <span id="year"></span> Swift Creations. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Mobile Menu Logic ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const menuItems = document.querySelectorAll('[data-menu-item]');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.add('hidden');
+        }
+
+        closeMenuButton.addEventListener('click', closeMenu);
+
+        // Close menu when a link is clicked
+        menuItems.forEach(item => {
+            item.addEventListener('click', closeMenu);
+        });
+
+        // --- Simple Form Handling (Prevent Default) ---
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formMessage.classList.remove('hidden');
+            formMessage.classList.add('text-accent');
+            formMessage.textContent = 'Thank you for your message! We will get back to you shortly.';
+            contactForm.reset();
+            
+            // Re-hide the message after a few seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

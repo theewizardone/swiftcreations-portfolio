@@ -1,0 +1,21 @@
+Dependency directories
+
+/node_modules
+/dist
+
+Editor/OS temporary files
+
+.DS_Store
+.vscode/
+
+Build artifacts
+
+/build
+/out
+/public
+
+Logs and npm-related files
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1049,100 +1049,113 @@
             }
         }
 
-        // Form submission handler
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            
-            // Validate form
-            const { isValid, errors } = validateForm(formData);
-            
-            if (!isValid) {
-                showErrors(errors);
-                showMessage('Please fix the errors above', 'error');
-                return;
-            }
-
-            // Clear previous errors and messages
-            showErrors({});
-            formMessage.classList.add('hidden');
-            setLoading(true);
-
-            try {
-                // Prepare template parameters for EmailJS
-                const templateParams = {
-                    from_name: formData.get('from_name'),
-                    from_email: formData.get('from_email'),
-                    company: formData.get('company') || 'Not provided',
-                    project_type: formData.get('project_type'),
-                    budget: formData.get('budget') || 'Not specified',
-                    message: formData.get('message'),
-                    to_email: 'helloswiftcreations@gmail.com',
-                    date: new Date().toLocaleString('en-KE', { 
-                        timeZone: 'Africa/Nairobi',
-                        dateStyle: 'full',
-                        timeStyle: 'short'
-                    }),
-                    website: 'Swift Creations Website Form'
-                };
-
-                // Send email using EmailJS
-                const response = await emailjs.send(
-                   service_7n4s3rfID,    // Replace with your EmailJS Service ID
-                    template_1qnwqqr,   // Replace with your EmailJS Template ID
-                    templateParams
-                );
-
-                // Success handling
-                if (response.status === 200) {
-                    showMessage('🎉 Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
-                    contactForm.reset();
-                    
-                    // Track conversion in Google Ads
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-17721437377/your-conversion-label',
-                        'value': 1.0,
-                        'currency': 'KES'
-                    });
-
-                    // Track form submission
-                    gtag('event', 'form_submission', {
-                        'event_category': 'Contact',
-                        'event_label': 'Website Contact Form'
-                    });
-                } else {
-                    throw new Error('Failed to send message');
-                }
-
-            } catch (error) {
-                console.error('EmailJS Error:', error);
-                
-                 // User-friendly error messages
-    if (error.status === 0) {
-        showMessage('⚠️ Network error. Please check your internet connection and try again.', 'error');
-    } else if (error.text && error.text.includes('Public Key')) {
-        showMessage('❌ Email service configuration error. Please contact support.', 'error');
-    } else {
-        showMessage('❌ Sorry, there was an error sending your message. Please try again or contact us directly at helloswiftcreations@gmail.com', 'error');
+       // Form submission handler - COMPLETELY FIXED VERSION
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(contactForm);
+    
+    // Validate form
+    const { isValid, errors } = validateForm(formData);
+    
+    if (!isValid) {
+        showErrors(errors);
+        showMessage('Please fix the errors above', 'error');
+        return;
     }
-                
-                // Fallback: Open email client after 2 seconds
-                setTimeout(() => {
-                    if (confirm('Having trouble with the form? Would you like to open your email client instead?')) {
-                        const name = document.getElementById('name').value;
-                        const email = document.getElementById('email').value;
-                        const project = document.getElementById('project').value;
-                        const message = document.getElementById('message').value;
-                        
-                        const fallbackEmail = `mailto:helloswiftcreations@gmail.com?subject=Project Inquiry - ${encodeURIComponent(project)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AProject: ${encodeURIComponent(project)}%0A%0AMessage: ${encodeURIComponent(message)}`;
-                        window.location.href = fallbackEmail;
-                    }
-                }, 2000);
-            } finally {
-                setLoading(false);
+
+    // Clear previous errors and messages
+    showErrors({});
+    formMessage.classList.add('hidden');
+    setLoading(true);
+
+    try {
+        // Prepare template parameters for EmailJS
+        const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            company: document.getElementById('company').value || 'Not provided',
+            project_type: document.getElementById('project').value,
+            budget: document.getElementById('budget').value || 'Not specified',
+            message: document.getElementById('message').value,
+            to_email: 'helloswiftcreations@gmail.com',
+            date: new Date().toLocaleString('en-KE', { 
+                timeZone: 'Africa/Nairobi',
+                dateStyle: 'full',
+                timeStyle: 'short'
+            })
+        };
+
+        console.log('Sending email with params:', templateParams);
+
+        // Send email using EmailJS
+        const response = await emailjs.send(
+            service_7n4s3rfID,    // Replace with your EmailJS Service ID
+            template_1qnwqqr,   // Replace with your EmailJS Template ID
+            templateParams
+        );
+
+        console.log('EmailJS Response:', response);
+
+        // Success handling
+        if (response.status === 200) {
+            showMessage('🎉 Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+            contactForm.reset();
+            
+            // Track conversion in Google Ads
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17721437377/your-conversion-label',
+                'value': 1.0,
+                'currency': 'KES'
+            });
+        } else {
+            throw new Error('Failed to send message');
+        }
+
+    } catch (error) {
+        console.error('Full EmailJS Error Object:', error);
+        
+        // FIXED ERROR HANDLING - Safe way to check error properties
+        let errorMessage = '❌ Sorry, there was an error sending your message. ';
+        
+        // Check if error object exists and has properties
+        if (error) {
+            // Check for network errors
+            if (error.status === 0 || error.status === undefined) {
+                errorMessage = '⚠️ Network error. Please check your internet connection and try again.';
+            } 
+            // Check for EmailJS specific errors
+            else if (error.text) {
+                if (error.text.includes('Public Key') || error.text.includes('public key')) {
+                    errorMessage = '❌ Email service configuration error. Please check your EmailJS setup.';
+                } else {
+                    errorMessage = `❌ Email service error: ${error.text}`;
+                }
             }
-        });
+            // Check for general error message
+            else if (error.message) {
+                errorMessage = `❌ Error: ${error.message}`;
+            }
+        }
+        
+        showMessage(errorMessage, 'error');
+        
+        // Fallback: Open email client
+        setTimeout(() => {
+            if (confirm('Having trouble with the form? Would you like to open your email client instead?')) {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const project = document.getElementById('project').value;
+                const message = document.getElementById('message').value;
+                
+                const fallbackEmail = `mailto:helloswiftcreations@gmail.com?subject=Project Inquiry - ${encodeURIComponent(project)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AProject: ${encodeURIComponent(project)}%0A%0AMessage: ${encodeURIComponent(message)}`;
+                window.location.href = fallbackEmail;
+            }
+        }, 2000);
+    } finally {
+        setLoading(false);
+    }
+});
 
         // Add input validation styling
         const inputs = contactForm.querySelectorAll('input, textarea, select');

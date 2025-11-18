@@ -1151,23 +1151,21 @@ contactForm.addEventListener('submit', async (e) => {
     setLoading(true);
 
     try {
-        // CORRECTED template parameters - Match your template exactly
-const templateParams = {
-    from_name: document.getElementById('name').value,
-    from_email: document.getElementById('email').value,
-    company: document.getElementById('company').value || 'Not provided',
-    project_type: document.getElementById('project').value,
-    budget: document.getElementById('budget').value || 'Not specified',
-    message: document.getElementById('message').value,
-    date: new Date().toLocaleString('en-KE', { 
-        timeZone: 'Africa/Nairobi',
-        dateStyle: 'full',
-        timeStyle: 'short'
-    }),
-    // Remove these if not needed in template:
-    // name: document.getElementById('name').value,    // DUPLICATE
-    // email: document.getElementById('email').value   // DUPLICATE
-};
+        // Prepare template parameters for EmailJS
+        const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            company: document.getElementById('company').value || 'Not provided',
+            project_type: document.getElementById('project').value,
+            budget: document.getElementById('budget').value || 'Not specified',
+            message: document.getElementById('message').value,
+            to_email: 'helloswiftcreations@gmail.com',
+            date: new Date().toLocaleString('en-KE', { 
+                timeZone: 'Africa/Nairobi',
+                dateStyle: 'full',
+                timeStyle: 'short'
+            })
+        };
 
         console.log('Sending email with params:', templateParams);
 

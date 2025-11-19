@@ -1,4 +1,4 @@
-Swift Creations — Portfolio Website
+Swift Creations Ltd — Software Development Agency 
 
 This repository contains the static portfolio website for Swift Creations, a small agency showcasing projects and services. The site is implemented as a simple, responsive static site intended for easy deployment to any static-hosting provider.
 
